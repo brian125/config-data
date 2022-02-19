@@ -4,11 +4,11 @@ server:
     context-path: /store/v1
 spring:
   application:
-    name: service-shopping
+    name: service-user
   boot:
     admin:
       client:
-        url: http://localhost:9020
+        url: http://localhost:9011
   h2:
     console:
       enabled: true
