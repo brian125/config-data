@@ -4,3 +4,22 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service-movie
+          uri: lb://service-movie
+          predicates:
+            - Path=/movie/**
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/user/**
+        # - id: service-shopping
+        #   uri: lb://service-shopping
+        #   predicates:
+        #     - Path=/shopping/**
