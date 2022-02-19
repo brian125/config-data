@@ -1,25 +1,32 @@
 server:
-  port: 8080
+  port: 9200
+  servlet:
+    context-path: /store/v1
+spring:
+  application:
+    name: service-movie
+  boot:
+    admin:
+      client:
+        url: http://localhost:9011
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:productBD;
+    driver-class-name: org.h2.Driver
+    platform: h2
+    username: sa
+    password:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-spring:
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        - id: service-customer
-          uri: lb://service-customer
-          predicates:
-            - Path=/customer/**
-        - id: service-product
-          uri: lb://service-product
-          predicates:
-            - Path=/product/**
-        - id: service-shopping
-          uri: lb://service-shopping
-          predicates:
-            - Path=/shopping/**
+      defaultZone: http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
