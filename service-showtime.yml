@@ -1,14 +1,14 @@
 server:
-  port: 9200
+  port: 9202
   servlet:
     context-path: /store/v1
 spring:
   application:
-    name: service-product
+    name: service-showtime
   boot:
     admin:
       client:
-        url: http://localhost:9020
+        url: http://localhost:9011
   h2:
     console:
       enabled: true
@@ -21,7 +21,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:9010/eureka/
+      defaultZone: http://localhost:8761/eureka/
 management:
   endpoints:
     web:
